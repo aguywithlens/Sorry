@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Across the Spider-Verse</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&family=Permanent+Marker&family=Caveat:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom Font Assignments */
-        .font-spider {
-            font-family: 'Permanent Marker', cursive;
-        }
-        .font-sans-bold {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-        }
-        .font-handwritten {
-            font-family: 'Caveat', cursive;
-        }
+        .font-spider { font-family: 'Permanent Marker', cursive; }
+        .font-sans-bold { font-family: 'Montserrat', sans-serif; font-weight: 900; }
+        .font-handwritten { font-family: 'Caveat', cursive; }
 
-        /* Custom Keyframe Animations */
         @keyframes portalRotate {
             0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); filter: hue-rotate(0deg); }
             50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.1); filter: hue-rotate(180deg); }
             100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); filter: hue-rotate(360deg); }
         }
-
         @keyframes glitch {
             0% { text-shadow: 2px -2px 0 #ff0055, -2px 2px 0 #00fffa; }
             25% { text-shadow: -2px 3px 0 #ff0055, 3px -2px 0 #00fffa; }
@@ -34,32 +26,16 @@
             75% { text-shadow: -1px -3px 0 #ff0055, 2px -1px 0 #00fffa; }
             100% { text-shadow: 2px -2px 0 #ff0055, -2px 2px 0 #00fffa; }
         }
-
         @keyframes spiderFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-15px) rotate(1deg); }
         }
 
-        /* Helper Classes */
-        .portal-bg {
-            animation: portalRotate 15s linear infinite;
-        }
-        .glitch-text {
-            animation: glitch 0.3s steps(2) infinite;
-        }
-        .card-float-1 {
-            animation: spiderFloat 6s ease-in-out infinite;
-        }
-        .card-float-2 {
-            animation: spiderFloat 8s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-        .card-float-3 {
-            animation: spiderFloat 7s ease-in-out infinite;
-            animation-delay: 2s;
-        }
-
-        /* Comic halftone pattern overlay */
+        .portal-bg { animation: portalRotate 15s linear infinite; }
+        .glitch-text { animation: glitch 0.3s steps(2) infinite; }
+        .card-float-1 { animation: spiderFloat 6s ease-in-out infinite; }
+        .card-float-2 { animation: spiderFloat 8s ease-in-out infinite; animation-delay: 1s; }
+        .card-float-3 { animation: spiderFloat 7s ease-in-out infinite; animation-delay: 2s; }
         .halftone {
             background-image: radial-gradient(rgba(0,0,0,0.15) 15%, transparent 16%);
             background-size: 8px 8px;
@@ -69,165 +45,208 @@
 <body class="bg-black text-white overflow-x-hidden font-sans-bold selection:bg-rose-600">
 
     <div class="fixed inset-0 pointer-events-none halftone z-50"></div>
-
     <div class="fixed top-1/2 left-1/2 w-[140vw] h-[140vw] md:w-[80vw] md:h-[80vw] rounded-full blur-[100px] opacity-40 bg-gradient-to-r from-rose-600 via-purple-600 to-cyan-500 portal-bg -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none"></div>
 
+    <!-- Navbar -->
     <nav class="relative z-40 flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <div onclick="triggerHaptic('light')" class="text-2xl font-spider tracking-wider text-rose-500 hover:text-cyan-400 transition duration-300 cursor-pointer">
-            SPIDER-VERSE
-        </div>
-        <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
-            <a href="#heroes" onclick="triggerHaptic('light')" class="hover:text-rose-500 transition-colors duration-300">The Spiders</a>
-            <a href="#dimensions" onclick="triggerHaptic('light')" class="hover:text-cyan-400 transition-colors duration-300">Dimensions</a>
-            <a href="#about" onclick="triggerHaptic('light')" class="hover:text-purple-500 transition-colors duration-300">Anomalies</a>
-        </div>
-        <button onclick="triggerApologyMultiverse()" class="px-6 py-2 border-2 border-rose-600 hover:bg-rose-600 text-xs tracking-widest uppercase font-bold rounded-none transform -skew-x-12 transition-all duration-300 hover:shadow-[0_0_15px_#e11d48]">
-            Enter Multiverse
-        </button>
+        <div onclick="triggerHaptic('light')" class="text-2xl font-spider tracking-wider text-rose-500 hover:text-cyan-400 transition duration-300 cursor-pointer">SPIDER-VERSE</div>
+        <button onclick="triggerApologyMultiverse()" class="px-6 py-2 border-2 border-rose-600 hover:bg-rose-600 text-xs tracking-widest uppercase font-bold rounded-none transform -skew-x-12 transition-all duration-300">Enter Multiverse</button>
     </nav>
 
-    <header class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-        <h1 class="text-5xl md:text-8xl tracking-tight leading-none uppercase select-none mb-4">
+    <!-- Header -->
+    <header class="relative min-h-[80vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+        <h1 class="text-5xl md:text-8xl tracking-tight leading-none uppercase mb-4">
             <span class="text-white block">Across The</span>
             <span class="text-rose-600 block font-spider glitch-text tracking-widest py-4">Spider-Verse</span>
         </h1>
-
-        <p class="max-w-xl text-sm md:text-base text-gray-400 tracking-wider mb-8 uppercase">
-            Anyone can wear the mask. But it's how you wear it that matters. Join the Spider-Society and leap into the multiverse.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#heroes" onclick="triggerHaptic('heavy')" class="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold uppercase tracking-wider transform -skew-x-12 hover:scale-105 transition-all duration-300 shadow-[5px_5px_0px_0px_#e11d48]">
-                Explore Heroes
-            </a>
-            <button onclick="triggerApologyMultiverse()" class="px-8 py-4 bg-transparent border-2 border-white hover:border-rose-600 hover:text-rose-500 uppercase tracking-wider transform -skew-x-12 hover:scale-105 transition-all duration-300">
-                Break Canon
-            </button>
+        <p class="max-w-xl text-sm md:text-base text-gray-400 tracking-wider mb-8 uppercase">Anyone can wear the mask. But it's how you wear it that matters.</p>
+        <div class="flex gap-4">
+            <a href="#heroes" class="px-8 py-4 bg-cyan-500 text-black font-bold uppercase tracking-wider transform -skew-x-12 shadow-[5px_5px_0px_0px_#e11d48]">Explore Heroes</a>
         </div>
     </header>
 
+    <!-- Character Grid -->
     <section id="heroes" class="relative max-w-7xl mx-auto px-8 py-24 z-10">
-        <h2 class="text-3xl md:text-5xl text-center mb-16 uppercase italic">
-            Select Your <span class="text-cyan-400">Spider-Hero</span>
-        </h2>
+        <h2 class="text-3xl md:text-5xl text-center mb-16 uppercase italic">Select Your <span class="text-cyan-400">Spider-Hero</span></h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div onclick="triggerApologyMultiverse()" class="card-float-1 group relative bg-neutral-900 border-4 border-rose-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform -skew-y-3 cursor-pointer hover:border-cyan-400 transition-colors duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-rose-900 via-black to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-300 z-0"></div>
-                <div class="relative z-10">
+            
+            <!-- Miles Morales Card -->
+            <div onclick="triggerApologyMultiverse()" class="card-float-1 group relative bg-neutral-900 border-4 border-rose-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform -skew-y-3 cursor-pointer">
+                <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-60 transition-opacity duration-500 z-0" style="background-image: url('my-miles-morales.png');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-rose-950 via-black/40 to-transparent z-10"></div>
+                
+                <div class="relative z-20">
                     <span class="text-rose-500 text-xs tracking-widest uppercase">Earth-1610</span>
-                    <h3 class="text-3xl font-spider mt-2 group-hover:text-rose-500 transition-colors duration-300">Miles Morales</h3>
+                    <h3 class="text-3xl font-spider mt-2">Miles Morales</h3>
                 </div>
-                <div class="relative z-10">
-                    <p class="text-xs text-gray-400 mb-4 group-hover:text-white transition-colors">"Just keep going. That's all I do."</p>
-                    <span class="text-xs font-bold tracking-widest uppercase text-cyan-400 group-hover:translate-x-2 inline-block transition-transform duration-300">Bio-Electrokinesis &rarr;</span>
+                <div class="relative z-20">
+                    <p class="text-xs text-gray-200 mb-4 font-sans font-normal">"Just keep going. That's all I do."</p>
+                    <!-- SPECIAL INTERACTIVE BUTTON FOR MILES -->
+                    <button onclick="showBioElectroImage(event)" class="text-xs font-bold tracking-widest uppercase text-cyan-400 hover:text-rose-400 transition-colors duration-300 bg-black/60 px-3 py-2 border border-cyan-400 cursor-pointer">
+                        Bio-Electrokinesis &rarr;
+                    </button>
                 </div>
             </div>
 
-            <div onclick="triggerApologyMultiverse()" class="card-float-2 group relative bg-neutral-900 border-4 border-purple-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform skew-y-3 cursor-pointer hover:border-rose-500 transition-colors duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-purple-900 via-black to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-300 z-0"></div>
-                <div class="relative z-10">
+            <!-- Gwen Stacy Card -->
+            <div onclick="triggerApologyMultiverse()" class="card-float-2 group relative bg-neutral-900 border-4 border-purple-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform skew-y-3 cursor-pointer">
+                <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-60 transition-opacity duration-500 z-0" style="background-image: url('chumi-gwen-stacy.png');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-purple-950 via-black/40 to-transparent z-10"></div>
+                
+                <div class="relative z-20">
                     <span class="text-purple-400 text-xs tracking-widest uppercase">Earth-65</span>
-                    <h3 class="text-3xl font-spider mt-2 group-hover:text-purple-400 transition-colors duration-300">Gwen Stacy</h3>
+                    <h3 class="text-3xl font-spider mt-2">Gwen Stacy</h3>
                 </div>
-                <div class="relative z-10">
-                    <p class="text-xs text-gray-400 mb-4 group-hover:text-white transition-colors">"I wanted to be special. But I'm just Gwen."</p>
-                    <span class="text-xs font-bold tracking-widest uppercase text-pink-400 group-hover:translate-x-2 inline-block transition-transform duration-300">Acrobatic Percussionist &rarr;</span>
+                <div class="relative z-20">
+                    <p class="text-xs text-gray-200 mb-4 font-sans font-normal">"I wanted to be special. But I'm just Gwen."</p>
+                    <!-- SPECIAL INTERACTIVE BUTTON FOR GWEN (CHUMI) -->
+                    <button onclick="showGwenPercussionImage(event)" class="text-xs font-bold tracking-widest uppercase text-pink-400 hover:text-rose-400 transition-colors duration-300 bg-black/60 px-3 py-2 border border-pink-400 cursor-pointer">
+                        Acrobatic Percussionist &rarr;
+                    </button>
                 </div>
             </div>
 
-            <div onclick="triggerApologyMultiverse()" class="card-float-3 group relative bg-neutral-900 border-4 border-cyan-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform -skew-y-3 cursor-pointer hover:border-purple-500 transition-colors duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-cyan-950 via-black to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-300 z-0"></div>
+            <!-- Miguel Card -->
+            <div onclick="triggerApologyMultiverse()" class="card-float-3 group relative bg-neutral-900 border-4 border-cyan-600 p-6 flex flex-col justify-between h-[450px] overflow-hidden transform -skew-y-3 cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-cyan-950 via-black to-transparent opacity-40 z-0"></div>
                 <div class="relative z-10">
                     <span class="text-cyan-400 text-xs tracking-widest uppercase">Earth-928</span>
-                    <h3 class="text-3xl font-spider mt-2 group-hover:text-cyan-400 transition-colors duration-300">Miguel O'Hara</h3>
+                    <h3 class="text-3xl font-spider mt-2">Miguel O'Hara</h3>
                 </div>
                 <div class="relative z-10">
-                    <p class="text-xs text-gray-400 mb-4 group-hover:text-white transition-colors">"You are an anomaly. Secure the canon!"</p>
-                    <span class="text-xs font-bold tracking-widest uppercase text-red-500 group-hover:translate-x-2 inline-block transition-transform duration-300">Lasers & Claws &rarr;</span>
+                    <p class="text-xs text-gray-400 mb-4">"You are an anomaly. Secure the canon!"</p>
+                    <span class="text-xs font-bold tracking-widest uppercase text-red-500">Lasers & Claws &rarr;</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="sorryModal" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500 overflow-y-auto">
-        <div class="relative max-w-lg w-full bg-neutral-900 border-4 border-rose-600 p-8 md:p-10 transform -skew-y-1 shadow-[0_0_30px_rgba(225,29,72,0.5)]">
-            
-            <div class="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-cyan-400"></div>
-            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-cyan-400"></div>
-
-            <div class="text-center mb-6">
-                <span class="text-cyan-400 text-xs tracking-widest uppercase block mb-1">Incoming Transmission // Earth-616</span>
-                <h2 class="text-3xl md:text-4xl font-spider text-rose-500 glitch-text">For Chumi 🕸️</h2>
+    <!-- MODAL: MILES BIO-ELECTRO SHOWCASE -->
+    <div id="bioModal" class="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="relative max-w-4xl w-full border-4 border-cyan-400 bg-neutral-900 p-2 shadow-[0_0_50px_rgba(6,182,212,0.6)]">
+            <div class="absolute top-4 right-4 z-50">
+                <button onclick="closeBioModal()" class="bg-rose-600 text-black px-4 py-2 font-spider uppercase text-sm tracking-widest hover:bg-white transition-colors">X CLOSE</button>
             </div>
-
-            <div class="font-handwritten text-xl md:text-2xl text-gray-200 space-y-4 leading-relaxed tracking-wide">
-                <p>Hey Chumi,</p>
-                <p>
-                    I know I can be a bit of a chaotic anomaly sometimes, messing up the timeline and breaking our canon events. But of all the infinite realities and universes across the Spider-Verse, there is absolutely no universe where I don't love you.
-                </p>
-                <p>
-                    I'm incredibly sorry for my mistake. You are my constant, my Gwen, my anchor. Please forgive your friendly neighborhood idiot? 
-                </p>
-                <p class="text-right text-rose-400 font-spider text-lg mt-6">— Your Spider-Man ❤️</p>
-            </div>
-
-            <div class="mt-8 text-center">
-                <button onclick="closeApology()" class="px-6 py-2 bg-rose-600 hover:bg-rose-500 text-black font-bold uppercase text-xs tracking-widest transform -skew-x-12 transition-all duration-300">
-                    Resume Universe
-                </button>
+            <img src="my-miles-morales.png" alt="Bio Electrokinesis Miles" class="w-full h-auto max-h-[75vh] object-contain mx-auto">
+            <div class="p-4 text-center">
+                <h3 class="text-2xl font-spider text-cyan-400 glitch-text uppercase tracking-widest">⚡ BIO-ELECTROKINESIS ACTIVATED ⚡</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Energy surging through Earth-1610...</p>
             </div>
         </div>
     </div>
 
-    <footer class="border-t border-neutral-800 bg-black/80 py-12 relative z-30">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-xs tracking-widest uppercase text-gray-500">
-                Designed for the Multiverse. All realities protected.
+    <!-- NEW MODAL: GWEN ACROBATIC PERCUSSIONIST SHOWCASE -->
+    <div id="gwenModal" class="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="relative max-w-md w-full border-4 border-pink-500 bg-neutral-900 p-2 shadow-[0_0_50px_rgba(236,72,153,0.6)]">
+            <div class="absolute top-4 right-4 z-50">
+                <button onclick="closeGwenModal()" class="bg-rose-600 text-black px-4 py-2 font-spider uppercase text-sm tracking-widest hover:bg-white transition-colors">X CLOSE</button>
             </div>
-            <div class="flex gap-6 text-xs uppercase tracking-widest text-rose-500">
-                <span class="cursor-pointer hover:underline" onclick="triggerApologyMultiverse()">[Glitch Portal]</span>
-                <span class="cursor-pointer hover:underline" onclick="triggerApologyMultiverse()">[Spider-Society]</span>
+            <!-- Winking Gwen Stacy Image -->
+            <img src="chumi-gwen-stacy.png" alt="Acrobatic Percussionist Gwen" class="w-full h-auto max-h-[75vh] object-contain mx-auto">
+            <div class="p-4 text-center">
+                <h3 class="text-2xl font-spider text-pink-500 glitch-text uppercase tracking-widest">🥁 ACROBATIC PERCUSSIONIST ACTIVATED 🥁</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Rhythm syncing across Earth-65...</p>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- THE MULTIVERSE SORRY MODAL -->
+    <div id="sorryModal" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="relative max-w-lg w-full bg-neutral-900 border-4 border-rose-600 p-8 md:p-10 transform -skew-y-1 shadow-[0_0_30px_rgba(225,29,72,0.5)]">
+            <div class="text-center mb-6">
+                <span class="text-cyan-400 text-xs tracking-widest uppercase block mb-1">Incoming Transmission // Earth-616</span>
+                <h2 class="text-3xl md:text-4xl font-spider text-rose-500 glitch-text">For Chumi 🕸️</h2>
+            </div>
+            <div class="font-handwritten text-xl md:text-2xl text-gray-200 space-y-4 leading-relaxed">
+                <p>Hey Chumi,</p>
+                <p>I know I can be a bit of a chaotic anomaly sometimes, messing up the timeline and breaking our canon events. But of all the infinite realities across the Spider-Verse, there is absolutely no universe where I don't love you.</p>
+                <p>I'm incredibly sorry for my mistake. You are my constant, my Gwen, my anchor. Please forgive your friendly neighborhood idiot? </p>
+                <p class="text-right text-rose-400 font-spider text-lg mt-6">— Your Spider-Man ❤️</p>
+            </div>
+            <div class="mt-8 text-center">
+                <button onclick="closeApology()" class="px-6 py-2 bg-rose-600 hover:bg-rose-500 text-black font-bold uppercase text-xs tracking-widest transform -skew-x-12 transition-all duration-300">Resume Universe</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Haptic Feedback Engine using WebVibration API
         function triggerHaptic(type) {
             if ('vibrate' in navigator) {
-                if (type === 'light') {
-                    // Quick micro buzz for standard buttons
-                    navigator.vibrate(20);
-                } else if (type === 'heavy') {
-                    // Strong double buzz (web shoot click trigger)
-                    navigator.vibrate([60, 40, 60]);
-                } else if (type === 'glitch') {
-                    // Choppy, erratic glitch patterns 
-                    navigator.vibrate([100, 30, 100, 30, 200, 50, 100]);
-                }
+                if (type === 'light') navigator.vibrate(20);
+                else if (type === 'heavy') navigator.vibrate([60, 40, 60]);
+                else if (type === 'glitch') navigator.vibrate([100, 30, 100, 30, 200, 50, 100]);
             }
         }
 
-        // "Canon Break" visual glitch + haptic feedback
+        // Pop open Miles Image
+        function showBioElectroImage(event) {
+            event.stopPropagation();
+            triggerHaptic('glitch');
+            const body = document.body;
+            let glitchCounter = 0;
+            const glitchInterval = setInterval(() => {
+                body.style.filter = `hue-rotate(${Math.random() * 360}deg) invert(${Math.random() > 0.8 ? 1 : 0})`;
+                glitchCounter++;
+                if (glitchCounter > 8) {
+                    clearInterval(glitchInterval);
+                    body.style.filter = 'none';
+                    const bioModal = document.getElementById('bioModal');
+                    bioModal.classList.remove('opacity-0', 'pointer-events-none');
+                    bioModal.classList.add('opacity-100', 'pointer-events-auto');
+                }
+            }, 60);
+        }
+
+        function closeBioModal() {
+            triggerHaptic('light');
+            const bioModal = document.getElementById('bioModal');
+            bioModal.classList.remove('opacity-100', 'pointer-events-auto');
+            bioModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // NEW FEATURE: Pop open Gwen Image with pink styled glitch
+        function showGwenPercussionImage(event) {
+            event.stopPropagation();
+            triggerHaptic('glitch');
+            const body = document.body;
+            let glitchCounter = 0;
+            const glitchInterval = setInterval(() => {
+                // Fun chromatic glitch effect
+                body.style.filter = `hue-rotate(${Math.random() * 120 + 240}deg) saturate(2)`; // locks the glitch hues to deep pinks/purples
+                glitchCounter++;
+                if (glitchCounter > 8) {
+                    clearInterval(glitchInterval);
+                    body.style.filter = 'none';
+                    const gwenModal = document.getElementById('gwenModal');
+                    gwenModal.classList.remove('opacity-0', 'pointer-events-none');
+                    gwenModal.classList.add('opacity-100', 'pointer-events-auto');
+                }
+            }, 60);
+        }
+
+        function closeGwenModal() {
+            triggerHaptic('light');
+            const gwenModal = document.getElementById('gwenModal');
+            gwenModal.classList.remove('opacity-100', 'pointer-events-auto');
+            gwenModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Core Sorry Multiverse Modal
         function triggerApologyMultiverse() {
             const body = document.body;
             let glitchCounter = 0;
-            
-            // Trigger the custom glitch vibration pattern
             triggerHaptic('glitch');
 
             const glitchInterval = setInterval(() => {
                 body.style.filter = `hue-rotate(${Math.random() * 360}deg) invert(${Math.random() > 0.8 ? 1 : 0})`;
-                body.style.transform = `skew(${(Math.random() - 0.5) * 15}deg, ${(Math.random() - 0.5) * 8}deg) scale(${1 + Math.random() * 0.05})`;
-                
+                body.style.transform = `skew(${(Math.random() - 0.5) * 15}deg)`;
                 glitchCounter++;
                 if (glitchCounter > 12) {
                     clearInterval(glitchInterval);
                     body.style.filter = 'none';
                     body.style.transform = 'none';
                     
-                    // Reveal the modal
                     const modal = document.getElementById('sorryModal');
                     modal.classList.remove('opacity-0', 'pointer-events-none');
                     modal.classList.add('opacity-100', 'pointer-events-auto');
@@ -235,39 +254,12 @@
             }, 70);
         }
 
-        // Close Modal with feedback
         function closeApology() {
             triggerHaptic('light');
             const modal = document.getElementById('sorryModal');
             modal.classList.remove('opacity-100', 'pointer-events-auto');
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
-
-        // Mouse hover effects (triggers subtle haptics on mobile tap/hover)
-        const cards = document.querySelectorAll('.group');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                triggerHaptic('light'); // Slight tick when entering card territory
-            });
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (centerY - y) / 10; 
-                const rotateY = (x - centerX) / 10;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
     </script>
 </body>
 </html>
